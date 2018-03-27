@@ -10,7 +10,7 @@ def AND(x1, x2):
     else:
         return 1
 
-AND(0, 0)
-AND(1, 0)
-AND(0, 1)
-AND(1, 1) 
+if __name__ == '__main__':
+    for x in [(0,0),(1,0),(0,1),(1,1)]:
+        y = AND(x[0],x[1])
+        print(str(x) + '->' + str(y))

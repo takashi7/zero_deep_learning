@@ -6,10 +6,8 @@ def NAND(x1, x2):
     b = 0.7
     tmp = np.sum(w*x) + b
     if tmp <= 0:
-        print(0)
         return 0
     else:
-        print(1)
         return 1
 
 def OR(x1, x2):
@@ -18,20 +16,12 @@ def OR(x1, x2):
     b = -0.2
     tmp = np.sum(w*x) + b
     if tmp <= 0:
-        print(0)
         return 0
     else:
-        print(1)
         return 1
 
-print("NAND")
-NAND(0, 0)
-NAND(1, 0)
-NAND(0, 1)
-NAND(1, 1)
-
-print("NAND")
-OR(0, 0)
-OR(1, 0)
-OR(0, 1)
-OR(1, 1)
+if __name__ == '__main__':
+    for x in [(0,0), (1,0),(0,1),(1,1)]:
+        y_NAND = NAND(x[0],x[1])
+        y_OR = OR(x[0],x[1])
+        print(str(x) + "->" + str(y_NAND)+ "->" + str(y_OR))
