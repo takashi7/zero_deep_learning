@@ -1,7 +1,7 @@
 import numpy as np 
 from common.functions import *
 
-class ReLu:
+class Relu:
     def __init__(self):
         self.mask = None
 
