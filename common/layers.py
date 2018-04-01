@@ -1,11 +1,11 @@
 import numpy as np 
-from functions import *
+from common.functions import *
 
 class ReLu:
     def __init__(self):
         self.mask = None
 
-    def foward(self, x):
+    def forward(self, x):
         self.mask = (x <= 0)
         out = x.copy()
         out[self.mask] = 0
@@ -51,7 +51,7 @@ class Affine:
         dx = np.dot(dout, self.W.T)
         self.dW = np.dot(self.x.T, dout)
         self.db = np.sum(dout, axis=0)
-        dx = dx.reshpae(*self.original_x_shape)
+        dx = dx.reshape(*self.original_x_shape)
         return dx
 
 
