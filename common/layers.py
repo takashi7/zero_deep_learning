@@ -117,11 +117,11 @@ class BatchNormalization:
             x = x.reshpae(N, -1)
 
         out = self.__forward(x, train_flg)
-        return out.reshpae(*self.input_shape)
+        return out.reshape(*self.input_shape)
 
     def __forward(self, x, train_flg):
         if self.running_mean is None:
-            N, D = x.input_shape
+            N, D = x.shape
             self.running_mean = np.zeros(D)
             self.running_var = np.zeros(D)
 
@@ -160,7 +160,7 @@ class BatchNormalization:
         dgamma = np.sum(self.xn * dout, axis=0)
         dxn = self.gamma * dout
         dxc = dxn / self.std
-        dstd = -np.sum((dxn * self.xc) / (self.std * self.std), axis=0)
+        dstd = (-1) * np.sum((dxn * self.xc) / (self.std * self.std), axis=0)
         dvar = 0.5 * dstd / self.std
         dxc += (2.0 / self.batch_size) * self.xc * dvar
         dmu = np.sum(dxc, axis=0)
